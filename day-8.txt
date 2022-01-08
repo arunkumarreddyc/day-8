@@ -1,0 +1,204 @@
+QUESTION:  
+1.Class - Movie
+The class Movie is stated below. An instance of class Movie represents a film. This class has the following three properties:
+
+title, which is a String representing the title of the movie
+studio, which is a String representing the studio that made the movie
+rating, which is a String representing the rating of the movie (i.e. PG­13, R, etc)
+
+a) Write a constructor for the class Movie, which takes a String representing the title of the movie, a String representing the studio, and a String representing the rating as its arguments, and sets the respective class properties to these values.
+
+CODE:
+class movie {
+      constructor(moviename="" , productions = "", rating = "") {
+        this.moviename = moviename;
+        this.productions = productions;
+        this.rating = rating;
+      }
+     
+    }
+    
+    let cinema = new movie("singam", "kk production", "PG");
+
+
+QUESTION:1.b) The constructor for the class Movie will set the class property rating to "PG" as default when no rating is provided.
+
+CODE:
+class movie {
+      constructor(moviename="" , productions = "", rating = "PG") {
+        this.moviename = moviename;
+        this.productions = productions;
+        this.rating = rating;
+      }
+     
+    }
+    
+    let cinema = new movie("singam", "kk production", "");
+
+
+
+QUESTION: 1.c) Write a method getPG, which takes an array of base type Movie as its argument, and returns a new array of only those movies in the input array with a rating of "PG". You may assume the input array is full of Movie instances. The returned array need not be full.
+
+CODE:
+class movie {
+  constructor(moviename="" , productions = "", rating = "") {
+    this.moviename = moviename;
+    this.productions = productions;
+    this.rating = rating;
+  }
+  static getPg(movies) {
+    let pgrating = [];
+    for (let ms of movies) {
+      if (ms.rating == "PG") {
+        pgrating.push(ms);
+      }
+    }
+    return pgrating;
+  }
+}
+
+let cinema = [
+  new movie("singam", "kk production", "PG"),
+  new movie("kick", "ll production", "PG"),
+  new movie("kdk", "kjg prod", "R"),
+  new movie("dgg", "ggg", "12"),
+  new movie("djg", "dgg", "PG"),
+];
+
+console.log(movie.getPg(cinema));
+OUTPUT:
+[
+  movie {
+    moviename: 'singam',
+    productions: 'kk production',
+    rating: 'PG'
+  },
+  movie {
+    moviename: 'kick',
+    productions: 'll production',
+    rating: 'PG'
+  },
+  movie { moviename: 'djg', productions: 'dgg', rating: 'PG' }
+]
+
+QUESTION:1.d) Write a piece of code that creates an instance of the class Movie with the title “Casino Royale”, the studio “Eon Productions”, and the rating “PG­13”
+
+CODE:
+class movie {
+  constructor(moviename = "", productions = "", rating = "") {
+    this.moviename = moviename;
+    this.productions = productions;
+    this.rating = rating;
+  }
+ getPg(movies) {
+    
+    return `${this.moviename}-${this.productions}-${this.rating}`;
+  }
+}
+
+let cinema = new movie('Casino Royale','Eon Productions','PG-13');
+
+console.log(cinema.getPg());
+
+
+OUTPUT:
+Casino Royale-Eon Productions-PG-13
+
+
+
+QUESTION:  2.Create a class circle to get the double value of 'radius' and string of color 'red' and use getArr and setArr method to get the area,circumference and color of the circle.
+
+CODE:
+class circle {
+setcircle(radius, color) {
+    this.radius =parseFloat( radius );
+    this.color = color;
+  }
+
+getcircleArea() {
+
+    let area = (22/7)*(this.radius)**2
+    return  area;
+
+}
+
+getcircleCircumference() {
+
+    let circumference = 2*(22/7)*(this.radius)
+    return  circumference;
+
+}
+
+getcircleColor() {
+
+    let color = this.color
+    return  color;
+
+}
+}
+
+let circle1 = new circle();
+circle1.setcircle('3.2', "red");
+console.log(`Area of circle is : ${circle1.getcircleArea()}`);
+console.log(`Circumference of circle is : ${circle1.getcircleCircumference()}`);
+console.log(`Color of circle is : ${circle1.getcircleColor()}`);
+
+OUTPUT:
+Area of circle is : 32.182857142857145
+Circumference of circle is : 20.114285714285714
+Color of circle is : red
+
+
+QUESTION:  3.Write a “person” class to hold all the details.
+
+CODE:
+class person {
+  constructor(name, height, weight, color) {
+    this.name = name;
+    this.height = height;
+    this.weight = weight;
+    this.color = color;
+  }
+   get Details() {
+    let detls = [
+      `Name:${this.name},height:${this.height},weight: ${this.weight},color: ${this.color} `,
+    ];
+    return detls;
+  }
+}
+
+let person1 = new person("arun", "5.8", "63", "fair");
+console.log(person1.Details);
+
+OUTPUT:
+[ 'Name:arun,height:5.8,weight: 63,color: fair ' ]
+
+
+QUESTION:  4.write a class to calculate uber price.
+
+CODE:
+
+class uberprice {
+    constructor(timeofRide,km,chargePerMinute ) {
+      this.timeofRide = timeofRide;
+      this.km = km;
+      this.chargePerMinute = chargePerMinute;
+    }
+    // Getter
+    get price() {
+      return this.calculatedPrice();
+    }
+    // Method
+    calculatedPrice() {
+
+      return (this.chargePerMinute)+(this.timeofRide*this.km)
+  }
+}
+
+  const uberride = new uberprice(30,10,11);
+
+  console.log(`Your uber ride price is Rs.${uberride.price}`);
+OUTPUT:
+Your uber ride price is Rs.311
+
+
